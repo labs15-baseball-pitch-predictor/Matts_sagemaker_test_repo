@@ -12,7 +12,7 @@ class Preprocess:
         self.df = dataframe
     
     
-    def initial_column_drop(self, dataframe = self.df):
+    def initial_column_drop(self, dataframe):
         drop_columns = [
             'Unnamed: 0', 'release_pos_x', 'release_pos_z', 'des',
             #might want to keep bb_type and filder_2 is the catcher
@@ -31,7 +31,7 @@ class Preprocess:
         return dataframe
 
 
-    def data_wrangle(self, dataframe = self.df):
+    def data_wrangle(self, dataframe):
 
         """
         ## Events
@@ -87,7 +87,7 @@ class Preprocess:
         return dataframe
 
 
-    def create_target_feature(self, dataframe = self.df):
+    def create_target_feature(self, dataframe):
         """
         ## Create Next Pitch Feature
         """
@@ -97,7 +97,7 @@ class Preprocess:
         return dataframe
 
 
-    def one_hot_encode(self, dataframe = self.df):
+    def one_hot_encode(self, dataframe):
         one_hot_cols = [
             'events', 'zone', 'pitch_type', 'type', 'home_team', 'away_team',
             'pitch_count', 'L1_pitch_type',	'L1_pitch_result', 'L1_pitch_zone',
@@ -117,7 +117,7 @@ class Preprocess:
         return dataframe
 
 
-    def binary_encode(self, dataframe = self.df):
+    def binary_encode(self, dataframe):
         """
         ## Binary Encode
         """
@@ -128,7 +128,7 @@ class Preprocess:
         return dataframe
 
 
-    def secondary_column_drop(self, dataframe = self.df):
+    def secondary_column_drop(self, dataframe):
         """
         ## Drop Unneeded Columns
         """
@@ -141,13 +141,13 @@ class Preprocess:
         return dataframe
 
     
-    def process(self, dataframe = self.df):
-        df = initial_column_drop(dataframe)
-        df = data_wrangle(df)
-        df = create_target_feature(df)
-        df = one_hot_encode(df)
-        df = binary_encode(df)
-        df = secondary_column_drop(df)
+    def process(self, dataframe):
+        df = self.initial_column_drop(dataframe)
+        df = self.data_wrangle(df)
+        df = self.create_target_feature(df)
+        df = self.one_hot_encode(df)
+        df = self.binary_encode(df)
+        df = self.secondary_column_drop(df)
         return df
 
 
