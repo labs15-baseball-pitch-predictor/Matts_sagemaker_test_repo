@@ -83,7 +83,7 @@ class Preprocess:
 
         **Solution**: TEMPORARY - Drop feature
         """
-        dataframe = df.drop(columns = ['on_1b_id'])
+        dataframe = dataframe.drop(columns = ['on_1b_id'])
         return dataframe
 
 
