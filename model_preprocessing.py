@@ -3,7 +3,6 @@ import numpy as np
 import category_encoders
 from category_encoders.one_hot import OneHotEncoder
 from column_names import col_names
-import psycopg2
 
 class Preprocess:
     
